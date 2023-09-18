@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #222;
+}
+.stopwatch {
+  width: 90%;
+  max-width: 600px;
+  background-color: white;
+  padding: 20px 0;
+  margin: 10px;
+  text-align: center;
+}
+.stopwatch h1 {
+  margin: 10px;
+  text-align: center;
+  font-family: "Signika Negative", sans-serif;
+  font-size: 80px;
+  font-weight: bolder;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+  /* background-color: red; */
+}
+.buttons button {
+  cursor: pointer;
+}
+#startBtn:disabled {
+  background-color: green;
+  cursor: not-allowed;
+}
+.buttons img {
+  /* background-color: green; */
+  width: 75px;
+  margin: 10px;
+  padding: 15px;
+}
+.buttons img:nth-child(2) {
+  width: 85px;
+}
