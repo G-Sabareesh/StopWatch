@@ -1,8 +1,16 @@
 let [seconds, minutes, hours, milliseconds] = [0, 0, 0, 0];
 let displayTime = document.getElementById("displayTime");
 let timer = null;
+let displayTimevalue = `00:00:00`;
+
+const startWatch = document.getElementById("startBtn");
+const stopBtn = document.getElementById("stopBtn");
+const startImg = document.querySelector('.start');
 
 function timerWatch() {
+
+    document.getElementById("startBtn").disabled = true;
+
     milliseconds++;
 
     if (milliseconds == 10) {
@@ -20,7 +28,7 @@ function timerWatch() {
         }
     }
 
-    displayTime.innerHTML =
+    displayTimevalue =
         hours.toString().padStart(2, "0") +
         ":" +
         minutes.toString().padStart(2, "0") +
@@ -29,12 +37,11 @@ function timerWatch() {
         ":" +
         milliseconds.toString().padStart(2, "0");
 
+    displayTime.innerHTML = displayTimevalue;
+
 }
 
 function watchStart() {
-    if (timer != null) {
-        clearInterval(timer);
-    }
     timer = setInterval(timerWatch, 100);
 }
 
@@ -55,25 +62,41 @@ function watchReset() {
         milliseconds.toString().padStart(2, "0");
 }
 
+function stop_Watch() {
+
+    if (!stopBtn.disabled) {
+        watchStop();
+        stopBtn.disabled = true;
+        startWatch.disabled = false;
+        if ((stopBtn.disabled) && (startImg.src.includes('images/start.png'))) {
+            startImg.src = 'images/pause.png';
+                startImg.alt = '';
+        }
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    const startWatch = document.getElementById("startBtn");
     startWatch.addEventListener("click", () => {
         startWatch.disabled = true;
-        console.log("hi");
+        stopBtn.disabled = false;
         watchStart();
     });
 
-    const stopWatch = document.querySelector(".stop");
+    const stopWatch = document.querySelector("#stopBtn");
     stopWatch.addEventListener("click", () => {
-        watchStop();
-        startWatch.disabled = false;
-        startWatch.style.cursor = "pointer";
+        stop_Watch()
     });
 
-    const resetWatch = document.querySelector(".reset");
+    const resetWatch = document.querySelector("#resetBtn");
     resetWatch.addEventListener("click", () => {
-        watchReset();
-        startWatch.disabled = false;
-        startWatch.style.cursor = "pointer";
+        if (confirm('Do you want to reset the watch?')) {
+            stopBtn.disabled = false;
+            startImg.src = 'images/start.png';
+            startImg.alt = '';
+            watchReset();
+        }
+        else {
+            stop_Watch();
+        }
     });
 });
