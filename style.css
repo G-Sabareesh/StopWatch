@@ -1,31 +1,39 @@
-@import url("https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Nova+Square&family=Poppins:wght@400;500;600;700&display=swap");
 * {
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: "Nova Square", sans-serif;
   box-sizing: border-box;
 }
 body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
   background-color: #222;
 }
 .stopwatch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: fit-content;
   width: 90%;
   max-width: 600px;
-  background-color: white;
+  background-color: rgb(209, 209, 209);
+  border-radius: 5px;
+  outline: 2px solid white;
+  outline-offset: 5px;
   padding: 20px 0;
   margin: 10px;
   text-align: center;
+  overflow: hidden;
 }
 .stopwatch h1 {
   margin: 10px;
   text-align: center;
-  font-family: "Signika Negative", sans-serif;
   font-size: 80px;
   font-weight: bolder;
 }
@@ -35,21 +43,26 @@ body {
   justify-content: center;
   width: 100%;
   height: fit-content;
-  /* background-color: red; */
+  margin: 10px;
 }
 .buttons button {
+  outline: 2px solid black;
+  outline-offset: 2px;
   cursor: pointer;
+  margin: 0 20px;
+  border-radius: 50%;
+  border: none;
 }
-#startBtn:disabled {
-  background-color: green;
+#startBtn img {
+  width: 70px;
+}
+#startBtn:disabled,
+#stopBtn:disabled {
+  background-color: rgb(161, 160, 160);
   cursor: not-allowed;
 }
-.buttons img {
-  /* background-color: green; */
-  width: 75px;
-  margin: 10px;
-  padding: 15px;
-}
-.buttons img:nth-child(2) {
-  width: 85px;
+.buttons button img {
+  width: 60px;
+  margin: 6px;
+  padding: 10px;
 }
