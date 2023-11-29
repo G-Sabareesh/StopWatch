@@ -91,6 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     resetWatch.addEventListener("click", () => {
         if (confirm('Do you want to reset the watch?')) {
             stopBtn.disabled = false;
+            startWatch.disabled = false;
             startImg.src = 'images/start.png';
             startImg.alt = '';
             watchReset();
