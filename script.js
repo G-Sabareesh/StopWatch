@@ -60,6 +60,7 @@ function watchReset() {
         seconds.toString().padStart(2, "0") +
         ":" +
         milliseconds.toString().padStart(2, "0");
+    timer = null;
 }
 
 function stop_Watch() {
@@ -70,7 +71,7 @@ function stop_Watch() {
         startWatch.disabled = false;
         if ((stopBtn.disabled) && (startImg.src.includes('images/start.png'))) {
             startImg.src = 'images/pause.png';
-                startImg.alt = '';
+            startImg.alt = '';
         }
     }
 }
@@ -84,7 +85,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const stopWatch = document.querySelector("#stopBtn");
     stopWatch.addEventListener("click", () => {
-        stop_Watch()
+        if (timer != null) {
+            stop_Watch()
+        }
     });
 
     const resetWatch = document.querySelector("#resetBtn");
@@ -95,9 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
             startImg.src = 'images/start.png';
             startImg.alt = '';
             watchReset();
-        }
-        else {
-            stop_Watch();
         }
     });
 });
